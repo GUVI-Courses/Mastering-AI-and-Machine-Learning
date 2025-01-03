@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Your Vehicle's Selling Price</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="vehicle_age">Vehicle Age (years):</label>
+                <input type="number" name="vehicle_age" required>
+            </div>
+            <div class="form-group">
+                <label for="km_driven">Kilometers Driven:</label>
+                <input type="number" name="km_driven" required>
+            </div>
+            <div class="form-group">
+                <label for="mileage">Mileage (kmpl):</label>
+                <input type="number" step="0.01" name="mileage" required>
+            </div>
+            <div class="form-group">
+                <label for="engine">Engine (cc):</label>
+                <input type="number" name="engine" required>
+            </div>
+            <div class="form-group">
+                <label for="max_power">Max Power (bhp):</label>
+                <input type="number" step="0.01" name="max_power" required>
+            </div>
+            <div class="form-group">
+                <label for="seats">Seats:</label>
+                <input type="number" name="seats" required>
+            </div>
+
+            <!-- Dropdown for Seller Type -->
+            <div class="form-group">
+                <label for="seller_type">Seller Type:</label>
+                <select name="seller_type" required>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Trustmark Dealer">Trustmark Dealer</option>
+                </select>
+            </div>
+
+            <!-- Dropdown for Fuel Type -->
+            <div class="form-group">
+                <label for="fuel_type">Fuel Type:</label>
+                <select name="fuel_type" required>
+                    <option value="CNG">CNG</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                    <option value="LPG">LPG</option>
+                    <option value="Petrol">Petrol</option>
+                </select>
+            </div>
+
+            <!-- Dropdown for Transmission Type -->
+            <div class="form-group">
+                <label for="transmission_type">Transmission Type:</label>
+                <select name="transmission_type" required>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Predict Price</button>
+        </form>
+        <h2>{{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
